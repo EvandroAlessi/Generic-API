@@ -18,7 +18,7 @@ namespace GenericAPI.Services.Common
         /// </summary>
         /// <param name="request">entidade</param>
         /// <returns>entidade</returns>
-        public virtual TEntity Adicionar(TEntity request)
+        public virtual TEntity Add(TEntity request)
         {
             try
             {
@@ -40,7 +40,7 @@ namespace GenericAPI.Services.Common
         /// Busca as entidades
         /// </summary>
         /// <returns>Lista de entidades</returns>
-        public virtual IList<TEntity> Todos(int pagina = 1, int take = 10)
+        public virtual IList<TEntity> FindAll(int pagina = 1, int take = 10)
         {
             try
             {
@@ -67,7 +67,7 @@ namespace GenericAPI.Services.Common
         /// </summary>
         /// <param name="id">ID da entidade</param>
         /// <returns>Entidade</returns>
-        public virtual TEntity Buscar(int id)
+        public virtual TEntity Find(int id)
         {
             try
             {
@@ -95,7 +95,7 @@ namespace GenericAPI.Services.Common
         /// <param name="id">ID da entidade</param>
         /// <param name="request">Entidade</param>
         /// <returns>Entidade editada</returns>
-        public virtual bool Editar(int id, TEntity request)
+        public virtual bool Edit(int id, TEntity request)
         {
             try
             {
@@ -126,7 +126,7 @@ namespace GenericAPI.Services.Common
         /// </summary>
         /// <param name="id">ID da entidade</param>
         /// <returns>Entidade excluida</returns>
-        public virtual bool Excluir(int id)
+        public virtual bool Delete(int id)
         {
             try
             {

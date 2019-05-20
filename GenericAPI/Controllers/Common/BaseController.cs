@@ -22,7 +22,7 @@ namespace GenericAPI.Controllers.Common
         /// <returns>objetos</returns>
         [AcceptVerbs("GET")]
         [ResponseType(typeof(HttpResponseMessage))]
-        public virtual IHttpActionResult GetAll(int pagina = 1)
+        public virtual IHttpActionResult GetAll(int page = 1)
         {
             HttpResponseMessage response = new HttpResponseMessage();
 
@@ -30,7 +30,7 @@ namespace GenericAPI.Controllers.Common
             {
                 BaseService<TEntity> service = new BaseService<TEntity>();
 
-                var entidades = service.Todos(pagina);
+                var entidades = service.FindAll(page);
 
                 response = Request.CreateResponse(HttpStatusCode.OK, entidades);
                 response.Headers.Add("X-Server-Message", $"{typeof(TEntity).Name}s listados.");
@@ -59,12 +59,10 @@ namespace GenericAPI.Controllers.Common
             {
                 BaseService<TEntity> service = new BaseService<TEntity>();
 
-                var entidade = service.Buscar(id);
+                var entidade = service.Find(id);
 
                 response = Request.CreateResponse(HttpStatusCode.OK, entidade);
                 response.Headers.Add("X-Server-Message", $"{typeof(TEntity).Name} encontrado.");
-
-                return ResponseMessage(response);
             }
             catch (Exception ex)
             {
@@ -94,11 +92,10 @@ namespace GenericAPI.Controllers.Common
                     response.Headers.Add("X-Server-Message", "Formato ou inexistência de dados necessários a inserção em nossa base de dados.");
 
                     return ResponseMessage(response);
-
                 }
 
                 BaseService<TEntity> service = new BaseService<TEntity>();
-                var entidade = service.Adicionar(request);
+                var entidade = service.Add(request);
 
                 response = Request.CreateResponse(HttpStatusCode.OK, entidade);
                 response.Headers.Add("X-Server-Message", $"{typeof(TEntity).Name} Cadastrado com sucesso.");
@@ -128,7 +125,7 @@ namespace GenericAPI.Controllers.Common
             {
                 BaseService<TEntity> service = new BaseService<TEntity>();
 
-                bool wasEdited = service.Editar(id, request);
+                bool wasEdited = service.Edit(id, request);
 
                 if (wasEdited)
                 {
@@ -160,7 +157,7 @@ namespace GenericAPI.Controllers.Common
             {
                 BaseService<TEntity> service = new BaseService<TEntity>();
 
-                bool wasDeleted = service.Excluir(id);
+                bool wasDeleted = service.Delete(id);
 
                 if (wasDeleted)
                 {

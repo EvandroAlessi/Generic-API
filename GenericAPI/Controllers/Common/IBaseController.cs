@@ -9,7 +9,7 @@ namespace GenericAPI.Controllers.Common
 {
     interface IBaseController<TEntity> where TEntity : class
     {
-        IHttpActionResult GetAll(int pagina = 1);
+        IHttpActionResult GetAll(int page = 1);
         IHttpActionResult Get(int id);
         IHttpActionResult Post([FromBody]TEntity request);
         IHttpActionResult Put(int id, [FromBody]TEntity request);

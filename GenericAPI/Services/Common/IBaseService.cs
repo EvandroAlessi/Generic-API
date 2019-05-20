@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace GenericAPI.Services.Common
 {
-    public interface IBaseService<TEntidade> where TEntidade : class
+    public interface IBaseService<TEntity> where TEntity : class
     {
-        IList<TEntidade> Todos(int pagina = 1, int take = 10);
-        TEntidade Buscar(int id);
-        TEntidade Adicionar(TEntidade entidade);
-        bool Editar(int id, TEntidade entidade);
-        bool Excluir(int id);
+        IList<TEntity> FindAll(int pagina = 1, int take = 10);
+        TEntity Find(int id);
+        TEntity Add(TEntity entidade);
+        bool Edit(int id, TEntity entidade);
+        bool Delete(int id);
     }
 }
